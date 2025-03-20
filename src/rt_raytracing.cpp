@@ -120,9 +120,9 @@ void setupScene(RTContext &rtx, const char *filename)
     g_scene.boxes = {
        Box(glm::vec3(0.0f, -0.25f, 1.0f), glm::vec3(0.1f)),
        Box(glm::vec3(2.0f, -0.25f, 1.5f), glm::vec3(0.25f)),
-       Box(glm::vec3(3.0f, -0.25f, 0.0f), glm::vec3(0.5f)),
-       Box(glm::vec3(-2.0f, -0.25f, 1.0f), glm::vec3(0.1f)),
-       Box(glm::vec3(-0.5f, -0.25f, 0.7f), glm::vec3(0.1f)),
+       Box(glm::vec3(3.0f, -0.0f, 0.0f), glm::vec3(0.5f)),
+       Box(glm::vec3(-2.0f, 0.0f, 1.0f), glm::vec3(0.1f)),
+       Box(glm::vec3(-0.5f, 0.0f, 0.7f), glm::vec3(0.1f)),
     };
 
     // cg::OBJMesh mesh;
