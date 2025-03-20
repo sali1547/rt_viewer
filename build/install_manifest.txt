@@ -1,1 +1,0 @@
-/Users/samuellindberg/rt_viewer/bin/rt_viewer

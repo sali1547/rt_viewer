@@ -27,7 +27,7 @@ struct RTContext {
     // ...
 };
 
-glm::vec3 color(RTContext &rtx, const rt::Ray &r, int max_bounces);
+
 void setupScene(RTContext &rtx, const char *mesh_filename);
 void updateImage(RTContext &rtx);
 void resetImage(RTContext &rtx);

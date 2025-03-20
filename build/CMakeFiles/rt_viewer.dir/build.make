@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/bin/cmake
+CMAKE_COMMAND = /opt/homebrew/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/bin/cmake -E rm -f
+RM = /opt/homebrew/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -76,113 +76,113 @@ CMakeFiles/rt_viewer.dir/src/main.cpp.o: CMakeFiles/rt_viewer.dir/flags.make
 CMakeFiles/rt_viewer.dir/src/main.cpp.o: /Users/samuellindberg/Documents/GitHub/rt_viewer/src/main.cpp
 CMakeFiles/rt_viewer.dir/src/main.cpp.o: CMakeFiles/rt_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuellindberg/Documents/GitHub/rt_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rt_viewer.dir/src/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/src/main.cpp.o -MF CMakeFiles/rt_viewer.dir/src/main.cpp.o.d -o CMakeFiles/rt_viewer.dir/src/main.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/src/main.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/src/main.cpp.o -MF CMakeFiles/rt_viewer.dir/src/main.cpp.o.d -o CMakeFiles/rt_viewer.dir/src/main.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/src/main.cpp
 
 CMakeFiles/rt_viewer.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rt_viewer.dir/src/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/src/main.cpp > CMakeFiles/rt_viewer.dir/src/main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/src/main.cpp > CMakeFiles/rt_viewer.dir/src/main.cpp.i
 
 CMakeFiles/rt_viewer.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rt_viewer.dir/src/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/src/main.cpp -o CMakeFiles/rt_viewer.dir/src/main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/src/main.cpp -o CMakeFiles/rt_viewer.dir/src/main.cpp.s
 
 CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o: CMakeFiles/rt_viewer.dir/flags.make
 CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o: /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_raytracing.cpp
 CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o: CMakeFiles/rt_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuellindberg/Documents/GitHub/rt_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o -MF CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o.d -o CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_raytracing.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o -MF CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o.d -o CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_raytracing.cpp
 
 CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_raytracing.cpp > CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_raytracing.cpp > CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.i
 
 CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_raytracing.cpp -o CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_raytracing.cpp -o CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.s
 
 CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o: CMakeFiles/rt_viewer.dir/flags.make
 CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o: /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glew/src/glew.c
 CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o: CMakeFiles/rt_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuellindberg/Documents/GitHub/rt_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o -MF CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o.d -o CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glew/src/glew.c
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o -MF CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o.d -o CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glew/src/glew.c
 
 CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glew/src/glew.c > CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glew/src/glew.c > CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.i
 
 CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glew/src/glew.c -o CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glew/src/glew.c -o CMakeFiles/rt_viewer.dir/external/glew/src/glew.c.s
 
 CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o: CMakeFiles/rt_viewer.dir/flags.make
 CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o: /Users/samuellindberg/Documents/GitHub/rt_viewer/external/lodepng/lodepng.cpp
 CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o: CMakeFiles/rt_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuellindberg/Documents/GitHub/rt_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o -MF CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/lodepng/lodepng.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o -MF CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/lodepng/lodepng.cpp
 
 CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/lodepng/lodepng.cpp > CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/lodepng/lodepng.cpp > CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.i
 
 CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/lodepng/lodepng.cpp -o CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/lodepng/lodepng.cpp -o CMakeFiles/rt_viewer.dir/external/lodepng/lodepng.cpp.s
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o: CMakeFiles/rt_viewer.dir/flags.make
 CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o: /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui.cpp
 CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o: CMakeFiles/rt_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuellindberg/Documents/GitHub/rt_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o -MF CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o -MF CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui.cpp
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui.cpp > CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui.cpp > CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.i
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui.cpp -o CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui.cpp -o CMakeFiles/rt_viewer.dir/external/imgui/imgui.cpp.s
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o: CMakeFiles/rt_viewer.dir/flags.make
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o: /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_demo.cpp
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o: CMakeFiles/rt_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuellindberg/Documents/GitHub/rt_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o -MF CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_demo.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o -MF CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_demo.cpp
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_demo.cpp > CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_demo.cpp > CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.i
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_demo.cpp -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_demo.cpp -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_demo.cpp.s
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o: CMakeFiles/rt_viewer.dir/flags.make
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o: /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_draw.cpp
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o: CMakeFiles/rt_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuellindberg/Documents/GitHub/rt_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o -MF CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_draw.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o -MF CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_draw.cpp
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_draw.cpp > CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_draw.cpp > CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.i
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_draw.cpp -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_draw.cpp -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_draw.cpp.s
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o: CMakeFiles/rt_viewer.dir/flags.make
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o: /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_impl_glfw_gl3.cpp
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o: CMakeFiles/rt_viewer.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/samuellindberg/Documents/GitHub/rt_viewer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o -MF CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_impl_glfw_gl3.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o -MF CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o.d -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.o -c /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_impl_glfw_gl3.cpp
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_impl_glfw_gl3.cpp > CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_impl_glfw_gl3.cpp > CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.i
 
 CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_impl_glfw_gl3.cpp -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/samuellindberg/Documents/GitHub/rt_viewer/external/imgui/imgui_impl_glfw_gl3.cpp -o CMakeFiles/rt_viewer.dir/external/imgui/imgui_impl_glfw_gl3.cpp.s
 
 # Object files for target rt_viewer
 rt_viewer_OBJECTS = \

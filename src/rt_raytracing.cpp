@@ -63,20 +63,42 @@ bool hit_world(const Ray &r, float t_min, float t_max, HitRecord &rec)
 // }
 //
 // See Chapter 7 in the "Ray Tracing in a Weekend" book
+
+glm::vec3 random_in_unit_sphere(){
+    glm::vec3 p;
+    do {
+        p = 2.0f * glm::vec3(drand48(), drand48(), drand48()) - glm::vec3(1,1,1);
+    } while (glm::length2(p) >= 1.0);
+    return p; 
+}
 glm::vec3 color(RTContext &rtx, const Ray &r, int max_bounces)
 {
     if (max_bounces < 0) return glm::vec3(0.0f);
 
     HitRecord rec;
-    if (hit_world(r, 0.0f, 9999.0f, rec)) {
+    if (hit_world(r, 0.001f, 9999.0f, rec)) {
         rec.normal = glm::normalize(rec.normal);  // Always normalise before use!
         if (rtx.show_normals) { return rec.normal * 0.5f + 0.5f; }
-
         // Implement lighting for materials here
         // ...
-        return glm::vec3(0.0f);
-    }
+        
+        // if (hit_world(r, 0.0, max_bounces, rec)){  
+        //     glm::vec3 target = rec.p + rec.normal + random_in_unit_sphere();
+        //     return color(rtx, r, max_bounces-1); 
+        // }
 
+        glm::vec3 target = rec.p + rec.normal + random_in_unit_sphere();
+        Ray scattered(rec.p, glm::normalize(target - rec.p));
+        return 0.5f * color(rtx, scattered, max_bounces-1); 
+
+        // else {
+        //     glm::vec3 unit_direction = glm::normalize(r.direction());
+        //     float t = 0.5f*(unit_direction.y + 1.0f);
+        //     return (1.0f-t)*glm::vec3(1.0f,1.0f,1.0f) + t*glm::vec3(0.5f, 0.7f, 1.0f);
+
+        // }
+        
+    }
     // If no hit, return sky color
     glm::vec3 unit_direction = glm::normalize(r.direction());
     float t = 0.5f * (unit_direction.y + 1.0f);
@@ -124,7 +146,7 @@ void updateLine(RTContext &rtx, int y)
     glm::vec3 vertical(0.0f, 2.0f, 0.0f);
     glm::vec3 origin(0.0f, 0.0f, 0.0f);
     glm::mat4 world_from_view = glm::inverse(rtx.view);
-    int ns = 5; //Change this number if you waant higher antialiasing. Runs very slow if you increase this
+    int ns = 2; //Change this number if you waant higher antialiasing. Runs very slow if you increase this
 
     for (int x = 0; x < nx; ++x) {
         glm::vec3 col(0, 0, 0);  
@@ -147,6 +169,7 @@ void updateLine(RTContext &rtx, int y)
         }
 
         col /= float(ns);
+        col = glm::vec3(sqrt(col[0]), sqrt(col[1]), sqrt(col[2]) ); 
         rtx.image[y * nx + x] += glm::vec4(col, 1.0f);
     }
 }
