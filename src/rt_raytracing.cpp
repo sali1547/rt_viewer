@@ -113,6 +113,7 @@ void setupScene(RTContext &rtx, const char *filename)
 }
 
 // MODIFY THIS FUNCTION!
+// NOTES: antialiasing is implemented in this function! 
 void updateLine(RTContext &rtx, int y)
 {
     int nx = rtx.width;
@@ -123,29 +124,30 @@ void updateLine(RTContext &rtx, int y)
     glm::vec3 vertical(0.0f, 2.0f, 0.0f);
     glm::vec3 origin(0.0f, 0.0f, 0.0f);
     glm::mat4 world_from_view = glm::inverse(rtx.view);
+    int ns = 5; //Change this number if you waant higher antialiasing. Runs very slow if you increase this
 
-    // You can try parallelising this loop by uncommenting this line:
-    //#pragma omp parallel for schedule(dynamic)
     for (int x = 0; x < nx; ++x) {
-        float u = (float(x) + 0.5f) / float(nx);
-        float v = (float(y) + 0.5f) / float(ny);
-        Ray r(origin, lower_left_corner + u * horizontal + v * vertical);
-        r.A = glm::vec3(world_from_view * glm::vec4(r.A, 1.0f));
-        r.B = glm::vec3(world_from_view * glm::vec4(r.B, 0.0f));
+        glm::vec3 col(0, 0, 0);  
 
-        // Note: in the RTOW book, they have an inner loop for the number of
-        // samples per pixel. Here, you do not need this loop, because we want
-        // some interactivity and accumulate samples over multiple frames
-        // instead (until the camera moves or the rendering is reset).
+        for (int s = 0; s < ns; ++s) {
+            float u = (float(x) + drand48()) / float(nx);  // Jittered x
+            float v = (float(y) + drand48()) / float(ny);  // Jittered y
+     
+            Ray r(origin, lower_left_corner + u * horizontal + v * vertical);
+            r.A = glm::vec3(world_from_view * glm::vec4(r.A, 1.0f));
+            r.B = glm::vec3(world_from_view * glm::vec4(r.B, 0.0f));
+            
+            if (rtx.current_frame <= 0) {
+                glm::vec4 old = rtx.image[y * nx + x];
+                rtx.image[y * nx + x] = glm::clamp(old / glm::max(1.0f, old.a), 0.0f, 1.0f);
+            }
 
-        if (rtx.current_frame <= 0) {
-            // Here we make the first frame blend with the old image,
-            // to smoothen the transition when resetting the accumulation
-            glm::vec4 old = rtx.image[y * nx + x];
-            rtx.image[y * nx + x] = glm::clamp(old / glm::max(1.0f, old.a), 0.0f, 1.0f);
+            glm::vec3 c = color(rtx, r, rtx.max_bounces);      
+            col += c;
         }
-        glm::vec3 c = color(rtx, r, rtx.max_bounces);
-        rtx.image[y * nx + x] += glm::vec4(c, 1.0f);
+
+        col /= float(ns);
+        rtx.image[y * nx + x] += glm::vec4(col, 1.0f);
     }
 }
 

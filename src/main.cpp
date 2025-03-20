@@ -6,6 +6,8 @@
 #include "rt_raytracing.h"
 #include "cg_utils.h"
 #include "cg_utils2.h"
+#include "camera.h"
+
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -257,6 +259,32 @@ void resizeCallback(GLFWwindow *window, int width, int height)
     rt::resetImage(ctx->rtx);
 }
 
+//Didn't work here
+//  void antialiaaz(Context ctx){
+//     camera cam;
+//     int nx = 200;
+//     int ny = 100;
+//     int ns = 100;
+
+//     for (int j= ny-1; j >= 0; j--) {
+//         for (int i = 0; i < nx; i++) {
+//             glm::vec3 col(0,0,0);
+//             for (int s=0; s< ns; s++) {
+//                 float u = float(i + drand48()) / float(nx);
+//                 float v = float(j + drand48()) / float(ny);
+//                 const rt::Ray r = cam.get_ray(u,v);
+//                 glm::vec3 p = r.point_at_parameter(2.0);
+//                 col += color(ctx.rtx, r, ctx.rtx.max_bounces);
+//             }
+//             col /= float(ns);
+//             int ir = int(255.99*col[0]);
+//             int ig = int(255.99*col[1]);
+//             int ib = int(255.99*col[2]);
+//             std::cout << ir << " " << ig << " " << ib << "\n";
+//         }
+//     }
+//    }
+
 int main(void)
 {
     Context ctx;
@@ -280,6 +308,7 @@ int main(void)
     glfwSetCursorPosCallback(ctx.window, cursorPosCallback);
     glfwSetFramebufferSizeCallback(ctx.window, resizeCallback);
 
+
     // Load OpenGL functions
     glewExperimental = true;
     GLenum status = glewInit();
@@ -296,6 +325,11 @@ int main(void)
     glGenVertexArrays(1, &ctx.emptyVAO);
     glBindVertexArray(ctx.emptyVAO);
     init(ctx);
+
+
+
+  
+    // antialiaaz(ctx);
 
     // Start rendering loop
     while (!glfwWindowShouldClose(ctx.window)) {

@@ -1,0 +1,119 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-RelWithDebInfo-247f9d5a254308875034.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "glfw",
+					"childIndexes" : 
+					[
+						2
+					],
+					"jsonFile" : "directory-glfw-RelWithDebInfo-bd310048e1e49b39ecbe.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "external/glfw"
+				},
+				{
+					"build" : "glfw/src",
+					"jsonFile" : "directory-glfw.src-RelWithDebInfo-39d53ebde4114b77de91.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.6.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "external/glfw/src",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "rt_viewer",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "glfw::@12507ebf64a5258d241e",
+					"jsonFile" : "target-glfw-RelWithDebInfo-51ffe4e8b9541a1fcf8c.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rt_viewer::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rt_viewer-RelWithDebInfo-bd9cf0c3e6ada346a596.json",
+					"name" : "rt_viewer",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/samuellindberg/Documents/GitHub/rt_viewer/build",
+		"source" : "/Users/samuellindberg/Documents/GitHub/rt_viewer"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
