@@ -113,17 +113,22 @@ void setupScene(RTContext &rtx, const char *filename)
         Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f),
         Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f),
         Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
+        Sphere(glm::vec3(-1.0f, 0.0f, 1.5f), 0.1f),
+        Sphere(glm::vec3(0.0f, 0.0f, -0.5f), 0.25f),
     };
-    //g_scene.boxes = {
-    //    Box(glm::vec3(0.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
-    //    Box(glm::vec3(1.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
-    //    Box(glm::vec3(-1.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
-    //};
+   
+    g_scene.boxes = {
+       Box(glm::vec3(0.0f, -0.25f, 1.0f), glm::vec3(0.1f)),
+       Box(glm::vec3(2.0f, -0.25f, 1.5f), glm::vec3(0.25f)),
+       Box(glm::vec3(3.0f, -0.25f, 0.0f), glm::vec3(0.5f)),
+       Box(glm::vec3(-2.0f, -0.25f, 1.0f), glm::vec3(0.1f)),
+       Box(glm::vec3(-0.5f, -0.25f, 0.7f), glm::vec3(0.1f)),
+    };
 
-    //cg::OBJMesh mesh;
-    //cg::objMeshLoad(mesh, filename);
-    //g_scene.mesh.clear();
-    //for (int i = 0; i < mesh.indices.size(); i += 3) {
+    // cg::OBJMesh mesh;
+    // cg::objMeshLoad(mesh, filename);
+    // g_scene.mesh.clear();
+    // for (int i = 0; i < mesh.indices.size(); i += 3) {
     //    int i0 = mesh.indices[i + 0];
     //    int i1 = mesh.indices[i + 1];
     //    int i2 = mesh.indices[i + 2];
@@ -131,7 +136,7 @@ void setupScene(RTContext &rtx, const char *filename)
     //    glm::vec3 v1 = mesh.vertices[i1] + glm::vec3(0.0f, 0.135f, 0.0f);
     //    glm::vec3 v2 = mesh.vertices[i2] + glm::vec3(0.0f, 0.135f, 0.0f);
     //    g_scene.mesh.push_back(Triangle(v0, v1, v2));
-    //}
+    // }
 }
 
 // MODIFY THIS FUNCTION!
