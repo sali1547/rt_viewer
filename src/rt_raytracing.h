@@ -3,6 +3,10 @@
 #define GLM_FORCE_RADIANS
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 #include <vector>
 
@@ -24,8 +28,13 @@ struct RTContext {
     bool show_normals = true;
     // Add more settings and parameters here
     // ...
+    
 };
 
+<<<<<<< Updated upstream
+=======
+glm::vec3 random_in_unit_sphere();
+>>>>>>> Stashed changes
 void setupScene(RTContext &rtx, const char *mesh_filename);
 void updateImage(RTContext &rtx);
 void resetImage(RTContext &rtx);

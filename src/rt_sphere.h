@@ -4,14 +4,17 @@
 
 namespace rt {
 
-class Sphere : public Hitable {
+class Sphere: public Hitable {
   public:
     Sphere() {}
-    Sphere(const glm::vec3 &cen, float r) : center(cen), radius(r){};
+    Sphere(const glm::vec3 &cen, float r) : center(cen), radius(r) {};
+        Sphere(const glm::vec3 &cen, float r, material* mat) : center(cen), radius(r), material_ptr(mat) {};
+        
     virtual bool hit(const Ray &r, float t_min, float t_max, HitRecord &rec) const;
-
     glm::vec3 center;
     float radius;
+        material *material_ptr; 
+    
 };
 
 // Ray-sphere test from "Ray Tracing in a Weekend" book (page 16)
