@@ -85,7 +85,7 @@ glm::vec3 color(RTContext &rtx, const Ray &r, int depth)
     HitRecord rec;
 
 
-    
+
     // Check for hit with the world
     if (hit_world(r, 0.001f, 9999.0f, rec)) {
         rec.normal = glm::normalize(rec.normal);  // Ensure normal is normalized
@@ -99,7 +99,7 @@ glm::vec3 color(RTContext &rtx, const Ray &r, int depth)
         glm::vec3 attenuation;
 
         // Check if we should scatter (bounce) the ray
-        if (depth < 50 && rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
+        if (depth < rtx.bounces && rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
             return attenuation * color(rtx, scattered, depth + 1);
         } else {
             return glm::vec3(0.0f, 0.0f, 0.0f);
@@ -117,9 +117,12 @@ void setupScene(RTContext &rtx, const char *filename)
 {
     g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0));
     g_scene.spheres = {
-        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0)),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0.0)),
+        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0 + rtx.fuzzi)),
+        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0.3 + rtx.fuzzi)),
         Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, new lambertian(glm::vec3(0.8, 0.3, 0.3))),
+        Sphere(glm::vec3(1.3f, 0.0f, 1.2f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0.8 + rtx.fuzzi)),
+
+
     //     Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f),
     //     Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
     //     Sphere(glm::vec3(-1.0f, 0.0f, 1.5f), 0.1f),
@@ -171,7 +174,7 @@ void updateLine(RTContext &rtx, int y)
     glm::vec3 vertical(0.0f, 2.0f, 0.0f);
     glm::vec3 origin(0.0f, 0.0f, 0.0f);
     glm::mat4 world_from_view = glm::inverse(rtx.view);
-    int ns = 2; //Change this number if you waant higher antialiasing. Runs very slow if you increase this
+    int ns = rtx.ns; //Change this number if you waant higher antialiasing. Runs very slow if you increase this
 
     for (int x = 0; x < nx; ++x) {
         glm::vec3 col(0, 0, 0);  
@@ -194,7 +197,10 @@ void updateLine(RTContext &rtx, int y)
         }
 
         col /= float(ns);
-        col = glm::vec3(sqrt(col[0]), sqrt(col[1]), sqrt(col[2]) ); 
+        if (rtx.gamma == 1) {
+            col = glm::vec3(sqrt(col[0]), sqrt(col[1]), sqrt(col[2]) );
+            }
+
         rtx.image[y * nx + x] += glm::vec4(col, 1.0f);
     }
 }

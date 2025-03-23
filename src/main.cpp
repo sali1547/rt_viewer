@@ -147,6 +147,23 @@ void showGui(Context &ctx)
     // Add more settings and parameters here
     // ...
 
+    if (ImGui::SliderInt("Anti aliasing (AA)", &ctx.rtx.ns, 1, 20)) {
+        rt::resetAccumulation(ctx.rtx);
+    }
+
+    if (ImGui::SliderFloat("Fuzziness", &ctx.rtx.fuzzi, 0.0, 1.0, "%.2f")) {
+        rt::resetAccumulation(ctx.rtx);
+    }
+
+    if (ImGui::SliderInt("Bounces", &ctx.rtx.bounces, 1, 50)) {
+        rt::resetAccumulation(ctx.rtx);
+    }
+
+    if (ImGui::SliderInt("Gamma", &ctx.rtx.gamma, 0, 1)) {
+        rt::resetAccumulation(ctx.rtx);
+    }
+
+
     ImGui::Text("Progress");
     ImGui::ProgressBar(float(ctx.rtx.current_frame) / ctx.rtx.max_frames);
     if (ImGui::Button("Freeze/Resume")) { ctx.rtx.freeze = !ctx.rtx.freeze; }
