@@ -111,7 +111,6 @@ glm::vec3 color(RTContext &rtx, const Ray &r, int max_bounces){
         }
     }
         
->>>>>>> Stashed changes
     }
 
     // If no hit, return sky color
@@ -125,17 +124,6 @@ void setupScene(RTContext &rtx, const char *filename)
 {
     g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f);
     g_scene.spheres = {
-<<<<<<< Updated upstream
-        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f),
-        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
-    };
-    //g_scene.boxes = {
-    //    Box(glm::vec3(0.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
-    //    Box(glm::vec3(1.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
-    //    Box(glm::vec3(-1.0f, -0.25f, 0.0f), glm::vec3(0.25f)),
-    //};
-=======
         Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, new lambertian(glm::vec3(0.8f, 0.3f, 0.3))),
         Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8f, 0.6f, 0.2f), 1.0)),
         // Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
@@ -150,7 +138,6 @@ void setupScene(RTContext &rtx, const char *filename)
     //    Box(glm::vec3(-2.0f, 0.0f, 1.0f), glm::vec3(0.1f)),
     //    Box(glm::vec3(-0.5f, 0.0f, 0.7f), glm::vec3(0.1f)),
     // };
->>>>>>> Stashed changes
 
     //cg::OBJMesh mesh;
     //cg::objMeshLoad(mesh, filename);
