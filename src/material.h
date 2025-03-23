@@ -21,7 +21,7 @@ namespace rt{
     glm::vec3 random_in_unit_sphere() {
 		glm::vec3 p;
 		do {
-			p = (float)2.0*glm::vec3(random(), random(), random()) - glm::vec3(1, 1, 1);
+			p = (float)2.0*glm::vec3(drand48(), drand48(), drand48()) - glm::vec3(1, 1, 1);
 		} while ((p.x*p.x + p.y*p.y + p.z*p.z) >= 1.0);
 		return p;
 	}
@@ -35,7 +35,7 @@ namespace rt{
     class lambertian : public material {
         public:
             lambertian(const glm::vec3& a) : albedo(a) {}
-            virtual bool scatter (const Ray& r_in, const HitRecord& rec, glm::vec3& attenuation, Ray& scattered) const {
+            virtual bool scatter(const Ray& r_in, const HitRecord& rec, glm::vec3& attenuation, Ray& scattered) const {
                 glm::vec3 target = rec.p + rec.normal + random_in_unit_sphere();
                 scattered = Ray(rec.p, target-rec.p);
                 attenuation = albedo; 
