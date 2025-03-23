@@ -47,6 +47,9 @@ bool hit_world(const Ray &r, float t_min, float t_max, HitRecord &rec)
             rec = temp_rec;
         }
     }
+	if (!g_scene.mesh_bbox.hit(r, t_min, closest_so_far, temp_rec)) {
+		return hit_anything;  // Skip testing triangles if bounding box is missed
+	}
     for (int i = 0; i < g_scene.mesh.size(); ++i) {
         if (g_scene.mesh[i].hit(r, t_min, closest_so_far, temp_rec)) {
             hit_anything = true;
@@ -96,8 +99,9 @@ glm::vec3 color(RTContext &rtx, const Ray &r, int depth)
         glm::vec3 attenuation;
 
         // Check if we should scatter (bounce) the ray
-        if (depth < 50 && rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
-            return attenuation * color(rtx, scattered, depth + 1);
+        if (depth < 	5 && rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
+
+			return attenuation * color(rtx, scattered, depth + 1);
         } else {
             return glm::vec3(0.0f, 0.0f, 0.0f);
         }
@@ -115,7 +119,7 @@ void setupScene(RTContext &rtx, const char *filename)
     g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0));
     g_scene.spheres = {
         Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0)),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0)),
+        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0.0)),
         Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, new lambertian(glm::vec3(0.8, 0.3, 0.3))),
     //     Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f),
     //     Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
@@ -123,26 +127,37 @@ void setupScene(RTContext &rtx, const char *filename)
     //     Sphere(glm::vec3(0.0f, 0.0f, -0.5f), 0.25f),
      };
    
-    // g_scene.boxes = {
-    //    Box(glm::vec3(0.0f, -0.25f, 1.0f), glm::vec3(0.1f)),
-    //    Box(glm::vec3(2.0f, -0.25f, 1.5f), glm::vec3(0.25f)),
+     g_scene.boxes = {
+        Box(glm::vec3(0.0f, -0.25f, 1.0f), glm::vec3(0.1f), new metal(glm::vec3(0.8,0.6,0.2), 1.0)),
+        //Box(glm::vec3(2.0f, -0.25f, 1.5f), glm::vec3(0.25f)),
     //    Box(glm::vec3(3.0f, -0.0f, 0.0f), glm::vec3(0.5f)),
     //    Box(glm::vec3(-2.0f, 0.0f, 1.0f), glm::vec3(0.1f)),
     //    Box(glm::vec3(-0.5f, 0.0f, 0.7f), glm::vec3(0.1f)),
-    // };
+     };
 
-    // cg::OBJMesh mesh;
-    // cg::objMeshLoad(mesh, filename);
-    // g_scene.mesh.clear();
-    // for (int i = 0; i < mesh.indices.size(); i += 3) {
-    //    int i0 = mesh.indices[i + 0];
-    //    int i1 = mesh.indices[i + 1];
-    //    int i2 = mesh.indices[i + 2];
-    //    glm::vec3 v0 = mesh.vertices[i0] + glm::vec3(0.0f, 0.135f, 0.0f);
-    //    glm::vec3 v1 = mesh.vertices[i1] + glm::vec3(0.0f, 0.135f, 0.0f);
-    //    glm::vec3 v2 = mesh.vertices[i2] + glm::vec3(0.0f, 0.135f, 0.0f);
-    //    g_scene.mesh.push_back(Triangle(v0, v1, v2));
-    // }
+	glm::vec3 min_bound(FLT_MAX, FLT_MAX, FLT_MAX);
+	glm::vec3 max_bound(-FLT_MAX, -FLT_MAX, -FLT_MAX);
+
+     cg::OBJMesh mesh;
+     cg::objMeshLoad(mesh, filename);
+     g_scene.mesh.clear();
+     for (int i = 0; i < mesh.indices.size(); i += 3) {
+        int i0 = mesh.indices[i + 0];
+        int i1 = mesh.indices[i + 1];
+        int i2 = mesh.indices[i + 2];
+        glm::vec3 v0 = mesh.vertices[i0] + glm::vec3(0.0f, 0.135f, 0.0f);
+        glm::vec3 v1 = mesh.vertices[i1] + glm::vec3(0.0f, 0.135f, 0.0f);
+        glm::vec3 v2 = mesh.vertices[i2] + glm::vec3(0.0f, 0.135f, 0.0f);
+        g_scene.mesh.push_back(Triangle(v0, v1, v2));
+		 min_bound = glm::min(min_bound, v0);
+		 min_bound = glm::min(min_bound, v1);
+		 min_bound = glm::min(min_bound, v2);
+
+		 max_bound = glm::max(max_bound, v0);
+		 max_bound = glm::max(max_bound, v1);
+		 max_bound = glm::max(max_bound, v2);
+     }
+	g_scene.mesh_bbox = Box(min_bound, max_bound, new metal(glm::vec3(0.8,0.6,0.2), 1.0));
 }
 
 // MODIFY THIS FUNCTION!
