@@ -23,8 +23,11 @@ struct RTContext {
     glm::vec3 ground_color = glm::vec3(1.0f, 1.0f, 1.0f);
     glm::vec3 sky_color = glm::vec3(0.5f, 0.7f, 1.0f);
     bool show_normals = true;
-    // Add more settings and parameters here
-    // ...
+    int ns = 2;
+    float fuzzi = 0;
+    int bounces = 50; 
+    int gamma = 1;
+    
 };
 
 
