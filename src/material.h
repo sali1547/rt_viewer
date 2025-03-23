@@ -2,7 +2,6 @@
 #ifndef MATERIALH
 #define MATERIALH
 #include <glm/glm.hpp>
-#include <cstdio>
 
 struct HitRecord;
 

@@ -99,9 +99,8 @@ glm::vec3 color(RTContext &rtx, const Ray &r, int depth)
         glm::vec3 attenuation;
 
         // Check if we should scatter (bounce) the ray
-        if (depth < 	5 && rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
-
-			return attenuation * color(rtx, scattered, depth + 1);
+        if (depth < 50 && rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
+            return attenuation * color(rtx, scattered, depth + 1);
         } else {
             return glm::vec3(0.0f, 0.0f, 0.0f);
         }

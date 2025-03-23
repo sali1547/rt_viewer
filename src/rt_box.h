@@ -1,6 +1,7 @@
 #pragma once
 
 #include "rt_hitable.h"
+#include <stdlib.h>     // Needed for drand48()
 
 namespace rt {
 
