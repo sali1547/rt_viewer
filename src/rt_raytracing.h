@@ -33,4 +33,5 @@ void updateImage(RTContext &rtx);
 void resetImage(RTContext &rtx);
 void resetAccumulation(RTContext &rtx);
 
+
 }  // namespace rt

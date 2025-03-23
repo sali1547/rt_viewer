@@ -4266,6 +4266,7 @@ CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o: /Users/samuellindberg/Document
   /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glm/glm/vec4.hpp \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glm/glm/vector_relational.hpp \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/src/cg_utils2.h \
+  /Users/samuellindberg/Documents/GitHub/rt_viewer/src/material.h \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_box.h \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_hitable.h \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_ray.h \
@@ -4699,6 +4700,8 @@ CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o: /Users/samuellindberg/Document
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__iterator/ostream_iterator.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__iterator/iterator_traits.h:
+
+/Users/samuellindberg/Documents/GitHub/rt_viewer/src/material.h:
 
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__format/enable_insertable.h:
 

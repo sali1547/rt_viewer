@@ -1017,6 +1017,7 @@ CMakeFiles/rt_viewer.dir/src/rt_raytracing.cpp.o: \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glm/glm/gtx/component_wise.hpp \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glm/glm/gtx/../detail/setup.hpp \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/external/glm/glm/gtx/component_wise.inl \
+  /Users/samuellindberg/Documents/GitHub/rt_viewer/src/material.h \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_sphere.h \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_triangle.h \
   /Users/samuellindberg/Documents/GitHub/rt_viewer/src/rt_box.h \

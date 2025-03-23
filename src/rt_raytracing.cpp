@@ -1,12 +1,15 @@
 #include "rt_raytracing.h"
 #include "rt_ray.h"
 #include "rt_hitable.h"
+#include "material.h"
 #include "rt_sphere.h"
 #include "rt_triangle.h"
 #include "rt_box.h"
 
+
 #include "cg_utils2.h"  // Used for OBJ-mesh loading
 #include <stdlib.h>     // Needed for drand48()
+
 
 namespace rt {
 
@@ -64,42 +67,43 @@ bool hit_world(const Ray &r, float t_min, float t_max, HitRecord &rec)
 //
 // See Chapter 7 in the "Ray Tracing in a Weekend" book
 
-glm::vec3 random_in_unit_sphere(){
-    glm::vec3 p;
-    do {
-        p = 2.0f * glm::vec3(drand48(), drand48(), drand48()) - glm::vec3(1,1,1);
-    } while (glm::length2(p) >= 1.0);
-    return p; 
-}
-glm::vec3 color(RTContext &rtx, const Ray &r, int max_bounces)
+// glm::vec3 random_in_unit_sphere(){
+//     glm::vec3 p;
+//     do {
+//         p = 2.0f * glm::vec3(drand48(), drand48(), drand48()) - glm::vec3(1,1,1);
+//     } while (glm::length2(p) >= 1.0);
+//     return p; 
+// }
+
+glm::vec3 color(RTContext &rtx, const Ray &r, int depth)
 {
-    if (max_bounces < 0) return glm::vec3(0.0f);
 
+    if (depth < 0) return glm::vec3(0.0f);
     HitRecord rec;
+
+
+    
+    // Check for hit with the world
     if (hit_world(r, 0.001f, 9999.0f, rec)) {
-        rec.normal = glm::normalize(rec.normal);  // Always normalise before use!
-        if (rtx.show_normals) { return rec.normal * 0.5f + 0.5f; }
-        // Implement lighting for materials here
-        // ...
+        rec.normal = glm::normalize(rec.normal);  // Ensure normal is normalized
         
-        // if (hit_world(r, 0.0, max_bounces, rec)){  
-        //     glm::vec3 target = rec.p + rec.normal + random_in_unit_sphere();
-        //     return color(rtx, r, max_bounces-1); 
-        // }
+        // Debug mode to visualize normals
+        if (rtx.show_normals) {
+            return rec.normal * 0.5f + 0.5f;
+        }
 
-        glm::vec3 target = rec.p + rec.normal + random_in_unit_sphere();
-        Ray scattered(rec.p, glm::normalize(target - rec.p));
-        return 0.5f * color(rtx, scattered, max_bounces-1); 
+        Ray scattered;
+        glm::vec3 attenuation;
 
-        // else {
-        //     glm::vec3 unit_direction = glm::normalize(r.direction());
-        //     float t = 0.5f*(unit_direction.y + 1.0f);
-        //     return (1.0f-t)*glm::vec3(1.0f,1.0f,1.0f) + t*glm::vec3(0.5f, 0.7f, 1.0f);
-
-        // }
-        
+        // Check if we should scatter (bounce) the ray
+        if (depth < 50 && rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
+            return attenuation * color(rtx, scattered, depth + 1);
+        } else {
+            return glm::vec3(0.0f, 0.0f, 0.0f);
+        }
     }
-    // If no hit, return sky color
+
+    // Sky gradient color if no hit
     glm::vec3 unit_direction = glm::normalize(r.direction());
     float t = 0.5f * (unit_direction.y + 1.0f);
     return (1.0f - t) * rtx.ground_color + t * rtx.sky_color;
@@ -108,22 +112,24 @@ glm::vec3 color(RTContext &rtx, const Ray &r, int max_bounces)
 // MODIFY THIS FUNCTION!
 void setupScene(RTContext &rtx, const char *filename)
 {
-    g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f);
+    g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0));
     g_scene.spheres = {
-        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f),
-        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
-        Sphere(glm::vec3(-1.0f, 0.0f, 1.5f), 0.1f),
-        Sphere(glm::vec3(0.0f, 0.0f, -0.5f), 0.25f),
-    };
+        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0)),
+        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0)),
+        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, new lambertian(glm::vec3(0.8, 0.3, 0.3))),
+    //     Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f),
+    //     Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
+    //     Sphere(glm::vec3(-1.0f, 0.0f, 1.5f), 0.1f),
+    //     Sphere(glm::vec3(0.0f, 0.0f, -0.5f), 0.25f),
+     };
    
-    g_scene.boxes = {
-       Box(glm::vec3(0.0f, -0.25f, 1.0f), glm::vec3(0.1f)),
-       Box(glm::vec3(2.0f, -0.25f, 1.5f), glm::vec3(0.25f)),
-       Box(glm::vec3(3.0f, -0.0f, 0.0f), glm::vec3(0.5f)),
-       Box(glm::vec3(-2.0f, 0.0f, 1.0f), glm::vec3(0.1f)),
-       Box(glm::vec3(-0.5f, 0.0f, 0.7f), glm::vec3(0.1f)),
-    };
+    // g_scene.boxes = {
+    //    Box(glm::vec3(0.0f, -0.25f, 1.0f), glm::vec3(0.1f)),
+    //    Box(glm::vec3(2.0f, -0.25f, 1.5f), glm::vec3(0.25f)),
+    //    Box(glm::vec3(3.0f, -0.0f, 0.0f), glm::vec3(0.5f)),
+    //    Box(glm::vec3(-2.0f, 0.0f, 1.0f), glm::vec3(0.1f)),
+    //    Box(glm::vec3(-0.5f, 0.0f, 0.7f), glm::vec3(0.1f)),
+    // };
 
     // cg::OBJMesh mesh;
     // cg::objMeshLoad(mesh, filename);
