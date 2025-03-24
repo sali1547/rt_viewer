@@ -4,11 +4,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/component_wise.hpp>
 
-
-
-
-
-
 namespace rt {
     class material;
 
@@ -23,6 +18,5 @@ class Hitable {
 public:
     virtual bool hit(const Ray &r, float t_min, float t_max, HitRecord &rec) const = 0;
 };
-
 
 } // namespace rt

@@ -6,14 +6,11 @@
 #include "rt_triangle.h"
 #include "rt_box.h"
 
-
 #include "cg_utils2.h"  // Used for OBJ-mesh loading
 #include <stdlib.h>     // Needed for drand48()
 
-
 namespace rt {
 
-// Store scene (world) in a global variable for convenience
 struct Scene {
     Sphere ground;
     std::vector<Sphere> spheres;
@@ -60,44 +57,20 @@ bool hit_world(const Ray &r, float t_min, float t_max, HitRecord &rec)
     return hit_anything;
 }
 
-// This function should be called recursively (inside the function) for
-// bouncing rays when you compute the lighting for materials, like this
-//
-// if (hit_world(...)) {
-//     ...
-//     return color(rtx, r_bounce, max_bounces - 1);
-// }
-//
-// See Chapter 7 in the "Ray Tracing in a Weekend" book
-
-// glm::vec3 random_in_unit_sphere(){
-//     glm::vec3 p;
-//     do {
-//         p = 2.0f * glm::vec3(drand48(), drand48(), drand48()) - glm::vec3(1,1,1);
-//     } while (glm::length2(p) >= 1.0);
-//     return p; 
-// }
-
 glm::vec3 color(RTContext &rtx, const Ray &r, int depth)
 {
-
     if (depth < 0) return glm::vec3(0.0f);
     HitRecord rec;
-
-
-
     // Check for hit with the world
     if (hit_world(r, 0.001f, 9999.0f, rec)) {
-        rec.normal = glm::normalize(rec.normal);  // Ensure normal is normalized
+        rec.normal = glm::normalize(rec.normal); 
         
         // Debug mode to visualize normals
         if (rtx.show_normals) {
             return rec.normal * 0.5f + 0.5f;
         }
-
         Ray scattered;
         glm::vec3 attenuation;
-
         // Check if we should scatter (bounce) the ray
         if (depth < rtx.bounces && rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
             return attenuation * color(rtx, scattered, depth + 1);
@@ -105,23 +78,21 @@ glm::vec3 color(RTContext &rtx, const Ray &r, int depth)
             return glm::vec3(0.0f, 0.0f, 0.0f);
         }
     }
-
     // Sky gradient color if no hit
     glm::vec3 unit_direction = glm::normalize(r.direction());
     float t = 0.5f * (unit_direction.y + 1.0f);
     return (1.0f - t) * rtx.ground_color + t * rtx.sky_color;
 }
 
-// MODIFY THIS FUNCTION!
 void setupScene(RTContext &rtx, const char *filename)
 {
     g_scene.ground = Sphere(glm::vec3(0.0f, -1000.5f, 0.0f), 1000.0f, new metal(glm::vec3(0.8, 0.6, 0.2), 1.0));
     g_scene.spheres = {
-        Sphere(glm::vec3(0.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0 + rtx.fuzzi)),
-        Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0.3 + rtx.fuzzi)),
-        Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f, new lambertian(glm::vec3(0.8, 0.3, 0.3))),
-        Sphere(glm::vec3(1.3f, 0.0f, 1.2f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0.8 + rtx.fuzzi)),
-
+        Sphere(glm::vec3(2.0f, 0.0f, -1.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0 + rtx.fuzzi)),
+        Sphere(glm::vec3(1.5f, 0.0f, 0.0f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0.3 + rtx.fuzzi)),
+        Sphere(glm::vec3(-2.5f, 0.0f, 0.0f), 0.5f, new lambertian(glm::vec3(0.8, 0.3, 0.3))),
+        Sphere(glm::vec3(-3.3f, 0.0f, 1.2f), 0.5f, new metal(glm::vec3(0.8, 0.6, 0.2), 0.8 + rtx.fuzzi)),
+        Sphere(glm::vec3(2.6f, 0.0f, 1.2f), 0.25f, new metal(glm::vec3(0.8, 0.6, 0.2), 0 + rtx.fuzzi)),
 
     //     Sphere(glm::vec3(1.0f, 0.0f, 0.0f), 0.5f),
     //     Sphere(glm::vec3(-1.0f, 0.0f, 0.0f), 0.5f),
@@ -130,7 +101,7 @@ void setupScene(RTContext &rtx, const char *filename)
      };
    
      g_scene.boxes = {
-        Box(glm::vec3(0.0f, -0.25f, 1.0f), glm::vec3(0.1f), new metal(glm::vec3(0.8,0.6,0.2), 1.0)),
+        Box(glm::vec3(2.0f, -0.25f, 1.0f), glm::vec3(0.1f), new metal(glm::vec3(0.8,0.6,0.2), 1.0)),
         //Box(glm::vec3(2.0f, -0.25f, 1.5f), glm::vec3(0.25f)),
     //    Box(glm::vec3(3.0f, -0.0f, 0.0f), glm::vec3(0.5f)),
     //    Box(glm::vec3(-2.0f, 0.0f, 1.0f), glm::vec3(0.1f)),
@@ -143,13 +114,14 @@ void setupScene(RTContext &rtx, const char *filename)
      cg::OBJMesh mesh;
      cg::objMeshLoad(mesh, filename);
      g_scene.mesh.clear();
-	for (int i = 0; i < mesh.vertices.size(); i++) {
+     for (int i = 0; i < mesh.vertices.size(); i++) {
 		glm::vec3 v = mesh.vertices[i] + glm::vec3(0.0f, 0.135f, 0.0f);  // Apply the same translation
 
 		// Update bounding box correctly
 		min_bound = glm::min(min_bound, v);
 		max_bound = glm::max(max_bound, v + 0.5f);
 	}
+
      for (int i = 0; i < mesh.indices.size(); i += 3) {
         int i0 = mesh.indices[i + 0];
         int i1 = mesh.indices[i + 1];
@@ -158,24 +130,22 @@ void setupScene(RTContext &rtx, const char *filename)
         glm::vec3 v1 = mesh.vertices[i1] + glm::vec3(0.0f, 0.135f, 0.0f);
         glm::vec3 v2 = mesh.vertices[i2] + glm::vec3(0.0f, 0.135f, 0.0f);
         g_scene.mesh.push_back(Triangle(v0, v1, v2));
-		 /*min_bound = glm::min(min_bound, v0);
+		/*min_bound = glm::min(min_bound, v0);
 		 min_bound = glm::min(min_bound, v1);
 		 min_bound = glm::min(min_bound, v2);
 
 		 max_bound = glm::max(max_bound, v0);
 		 max_bound = glm::max(max_bound, v1);
 		 max_bound = glm::max(max_bound, v2);m::min(min_bound, v1);
-		 min_bound = glm::min(min_bound, v2);
+         min_bound = glm::min(min_bound, v2);
 
 		 max_bound = glm::max(max_bound, v0);
 		 max_bound = glm::max(max_bound, v1);
 		 max_bound = glm::max(max_bound, v2);*/
-
      }
 	g_scene.mesh_bbox = Box(min_bound, max_bound, new metal(glm::vec3(0.8,0.6,0.2), 1.0));
 }
 
-// MODIFY THIS FUNCTION!
 // NOTES: antialiasing is implemented in this function! 
 void updateLine(RTContext &rtx, int y)
 {
@@ -187,7 +157,7 @@ void updateLine(RTContext &rtx, int y)
     glm::vec3 vertical(0.0f, 2.0f, 0.0f);
     glm::vec3 origin(0.0f, 0.0f, 0.0f);
     glm::mat4 world_from_view = glm::inverse(rtx.view);
-    int ns = rtx.ns; //Change this number if you waant higher antialiasing. Runs very slow if you increase this
+    int ns = rtx.ns; //Change this number if you want higher antialiasing. Runs very slow if you increase this. 
 
     for (int x = 0; x < nx; ++x) {
         glm::vec3 col(0, 0, 0);  

@@ -7,12 +7,7 @@ struct HitRecord;
 
 #include "rt_ray.h"
 #include "rt_hitable.h"
-#include <stdlib.h>     // Needed for drand48()
-
-
-
-
-
+#include <stdlib.h>     
 
 namespace rt{
     glm::vec3 reflect(const glm::vec3& v, const glm::vec3& n) {
